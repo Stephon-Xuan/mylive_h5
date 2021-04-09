@@ -1,7 +1,6 @@
 // import logo from './logo.svg';
 // import './App.css';
 import { Button } from 'antd-mobile'
-import 'antd-mobile/dist/antd-mobile.css';
 
 function App() {
   return (
@@ -20,11 +19,6 @@ function App() {
           Learn React
         </a>
       </header> */}
-
-          <Button type="primary">primary</Button>
-          <Button type="primary" inline style={{ marginRight: '4px' }}>inline primary</Button>
-          <Button type="ghost" inline size="small" style={{ marginRight: '4px' }}>ghost</Button>
-
     </div>
   );
 }
