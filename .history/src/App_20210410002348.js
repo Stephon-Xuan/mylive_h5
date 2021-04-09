@@ -7,6 +7,7 @@ import 'antd-mobile/dist/antd-mobile.css';
 function App() {
   return (
     <div className="App">
+          {/* <Button type="primary">primary</Button> */}
           <Home></Home>
     </div>
   );
