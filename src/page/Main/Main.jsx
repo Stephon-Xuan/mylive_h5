@@ -5,6 +5,7 @@ import { LivingRoom } from "../LivingRoom/LivingRoom.jsx";
 import { Mine } from "../Mine/Mine.jsx";
 import { TabList } from '../Sort/Sort'
 import { Header } from './Header/Header'
+import $api from '../../api'
 
 export class Main extends React.Component {
   constructor(props) {
@@ -14,6 +15,11 @@ export class Main extends React.Component {
       hidden: false,
       fullScreen: true, //是否全屏
     };
+  }
+
+  componentDidMount(){
+    // this.$api.reqLivingList()
+    console.log($api.livingRoomApi.getRoomList())
   }
 
   renderContent(pageText) {

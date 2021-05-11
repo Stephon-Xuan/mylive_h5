@@ -6,6 +6,7 @@ import { Login } from "./page/Login/Login";
 import { Register } from "./page/Register/Register";
 import { LivePlay } from "./page/LivingRoom/LivePlay";
 import { SearchContent } from "./page/SearchContent/SearchContent.jsx";
+import Api from "./api/index";
 import {
   HashRouter as Router,
   Switch,
