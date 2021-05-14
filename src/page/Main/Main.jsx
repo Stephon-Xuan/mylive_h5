@@ -17,11 +17,6 @@ export class Main extends React.Component {
     };
   }
 
-  componentDidMount(){
-    // this.$api.reqLivingList()
-    console.log($api.livingRoomApi.getRoomList())
-  }
-
   renderContent(pageText) {
     return (
       <div

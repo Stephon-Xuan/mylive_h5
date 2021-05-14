@@ -141,7 +141,7 @@ export class List extends React.Component {
       }
       const obj = data[index--];
       return (
-        <div key={rowID} style={{ padding: '0 15px' }}>
+       <div key={rowID} s tyle={{ padding: '0 15px' }}>
           <div
             style={{
               lineHeight: '50px',

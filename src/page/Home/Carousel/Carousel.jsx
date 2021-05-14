@@ -2,8 +2,13 @@ import { Carousel, WingBlank } from 'antd-mobile';
 import React from "react";
 import ReactDOM from 'react-dom';
 export class CarouselList extends React.Component {
+  constructor(props){
+    super(props)
+  }
+
   state = {
-    data: ['1', '2', '3'],
+    // data: ['1', '2', '3'],
+    data:this.props.carouselList,
     imgHeight: 176,
   }
   componentDidMount() {
@@ -13,8 +18,19 @@ export class CarouselList extends React.Component {
         data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
       });
     }, 100);
+
+
+    console.log("属性值",this.props)
   }
+
+
+
   render() {
+    if(!this.state.data){
+      return null
+    }
+
+
     return (
       <WingBlank>
         <Carousel className="space-carousel"
@@ -29,7 +45,7 @@ export class CarouselList extends React.Component {
           {this.state.data.map((val, index) => (
             <a
               key={val}
-              href="http://www.alipay.com"
+              // href="http://www.alipay.com"
               style={{
                 display: 'block',
                 position: 'relative',
@@ -39,7 +55,8 @@ export class CarouselList extends React.Component {
               }}
             >
               <img
-                src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
+                // src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
+                src={val.image}
                 alt=""
                 style={{ width: '100%', verticalAlign: 'top' }}
                 onLoad={() => {

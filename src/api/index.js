@@ -31,10 +31,12 @@ import ajax from "./ajax";
 // }
 
 import livingRoomApi from "./modules/livingRoom";
+import carouselApi from "./modules/carousel";
 // import userApi from "./modules/user";
 
 const apiObj = {
   livingRoomApi,
+  carouselApi,
   //   userApi,
 };
 // console.log("api------", apiObj, livingRoomApi.getRoomList());
