@@ -9,15 +9,15 @@ export class CarouselList extends React.Component {
   state = {
     // data: ['1', '2', '3'],
     data:this.props.carouselList,
-    imgHeight: 176,
+    imgHeight: 200,
   }
   componentDidMount() {
     // simulate img loading
-    setTimeout(() => {
-      this.setState({
-        data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
-      });
-    }, 100);
+    // setTimeout(() => {
+    //   this.setState({
+    //     data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
+    //   });
+    // }, 100);
 
 
     console.log("属性值",this.props)

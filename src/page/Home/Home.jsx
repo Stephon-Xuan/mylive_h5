@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ListShow } from "../../components/ListShow/ListShow.jsx";
 import { SearchBarBtn } from './Search/Search.jsx'
 import { CarouselList } from './Carousel/Carousel.jsx'
-import { Notice } from './Notice/Notice'
+import { Notice } from '../../components/Notice/Notice'
 import './Home.css'
 import $api from '../../api'
 
@@ -29,7 +29,7 @@ export const Home = () => {
 
     return(
         <div>
-            <Notice></Notice>
+            <Notice title="在线微课系统欢迎您的使用！"></Notice>
             <div onClick={() =>{window.location.assign('/search')}}>
                 <SearchBarBtn ></SearchBarBtn>
             </div>

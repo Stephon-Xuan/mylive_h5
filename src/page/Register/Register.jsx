@@ -9,7 +9,8 @@ import {
   List,
   InputItem,
   WhiteSpace,
-  Button
+  Button,
+  Icon
 } from 'antd-mobile'
 import {Redirect} from 'react-router-dom'
 import './Register.css'
@@ -19,6 +20,7 @@ const ListItem = List.Item
 
 export class Register extends Component {
   state = {
+    emial:'',
     username: '',  // 用户名
     password: '',  // 密码
   }
@@ -49,16 +51,22 @@ export class Register extends Component {
 
     return (
       <div>
-        <NavBar>在线微课-注册</NavBar>
+        <NavBar
+          icon={<Icon type="left" />}
+          onLeftClick={() => window.history.back()}
+          >在线微课-注册</NavBar>
         {/* <Logo/> */}
         
         <WingBlank>
             <div className="login_wrap">
-                <img src="http://localhost:8080/img/logo.1a2850a7.jpg"></img>
+                <img
+                  style={{}}
+                  src="http://localhost:8080/img/logo.1a2850a7.jpg"></img>
                 <List>
                     {/* {msg ? <div className='error-msg'>{msg}</div> : null} */}
+                    <InputItem placeholder='请输入昵称' onChange={val => {this.handleChange('username', val)}}>昵称:</InputItem>
                     <WhiteSpace/>
-                    <InputItem placeholder='请输入用户名' onChange={val => {this.handleChange('username', val)}}>用户名:</InputItem>
+                    <InputItem placeholder='请输入用户名' onChange={val => {this.handleChange('username', val)}}>邮箱:</InputItem>
                     <WhiteSpace/>
                     <InputItem placeholder='请输入密码' type="password" onChange={val => {this.handleChange('password', val)}}>密&nbsp;&nbsp;&nbsp;码:</InputItem>
                     <WhiteSpace/>

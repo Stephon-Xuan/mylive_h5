@@ -100,7 +100,7 @@ export default class Reflv extends Component {
         controls={true}
         style={Object.assign({
           width: '100%',
-          height:'250px'
+          height:'200px'
         }, style)}
         ref={this.initFlv}
       />

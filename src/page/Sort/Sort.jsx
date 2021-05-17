@@ -1,28 +1,32 @@
+import React, {Component, useMemo} from 'react';
 import { Tabs, WhiteSpace, Badge } from 'antd-mobile';
-import { List } from "../../components/List/List.jsx";
+import { ListShow } from '../../components/ListShow/ListShow';
+import { sortData } from './sortData'
 
 const tabs = [
-  { title: <Badge text={'3'}>First Tab</Badge> },
-  { title: <Badge text={'今日(20)'}>Second Tab</Badge> },
-  { title: <Badge dot>Third Tab</Badge> },
+  { title: <Badge>个人成长</Badge> },
+  { title: <Badge>赚钱理财</Badge> },
+  { title: <Badge>享受生活</Badge> },
+  { title: <Badge>其他</Badge> },
 ];
 
-const tabs2 = [
-  { title: 'First Tab', sub: '1' },
-  { title: 'Second Tab', sub: '2' },
-  { title: 'Third Tab', sub: '3' },
-];
 
-export const TabList = () => (
+export const TabList = () => {
+  const {personal_growth} = sortData
+
+  const listData1 = useMemo(()=>{
+    return personal_growth
+  })
+
+  return(
   <div>
     <Tabs tabs={tabs}
-      initialPage={1}
+      initialPage={0}
       onChange={(tab, index) => { console.log('onChange', index, tab); }}
       onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-        Content of first tab
-        {/* <List></List> */}
+      <div style={{backgroundColor: '#fff' }}>
+         {<ListShow listData={ listData1 }></ListShow>}
       </div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
         Content of second tab
@@ -34,5 +38,6 @@ export const TabList = () => (
       </div>
     </Tabs>
   </div>
-);
+  )
+}
 

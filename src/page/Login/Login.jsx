@@ -9,7 +9,8 @@ import {
   List,
   InputItem,
   WhiteSpace,
-  Button
+  Button,
+  Icon
 } from 'antd-mobile'
 import {Redirect} from 'react-router-dom'
 import './Login.css'
@@ -49,7 +50,10 @@ export class Login extends Component {
 
     return (
       <div>
-        <NavBar>在线微课</NavBar>
+        <NavBar
+           icon={<Icon type="left" />}
+          onLeftClick={() => window.history.back()}
+        >在线微课</NavBar>
         {/* <Logo/> */}
         
         <WingBlank>
@@ -58,7 +62,7 @@ export class Login extends Component {
                 <List>
                     {/* {msg ? <div className='error-msg'>{msg}</div> : null} */}
                     <WhiteSpace/>
-                    <InputItem placeholder='请输入用户名' onChange={val => {this.handleChange('username', val)}}>用户名:</InputItem>
+                    <InputItem placeholder='请输入用户名' onChange={val => {this.handleChange('username', val)}}>昵称:</InputItem>
                     <WhiteSpace/>
                     <InputItem placeholder='请输入密码' type="password" onChange={val => {this.handleChange('password', val)}}>密&nbsp;&nbsp;&nbsp;码:</InputItem>
                     <WhiteSpace/>

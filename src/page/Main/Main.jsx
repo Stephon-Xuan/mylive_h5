@@ -6,6 +6,9 @@ import { Mine } from "../Mine/Mine.jsx";
 import { TabList } from '../Sort/Sort'
 import { Header } from './Header/Header'
 import $api from '../../api'
+// import { IconFont } from '../../components/IconFont/IconFont'
+import { imgPathTo } from '../../utils/utils'
+
 
 export class Main extends React.Component {
   constructor(props) {
@@ -77,8 +80,10 @@ export class Main extends React.Component {
                   width: "22px",
                   height: "22px",
                   background:
-                    "url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat",
+                    `url(${imgPathTo('首页.svg')}) center center /  21px 21px no-repeat`,
+                  
                 }}
+                className={'icon-shouye'}
               />
             }
             selectedIcon={
@@ -87,8 +92,9 @@ export class Main extends React.Component {
                   width: "22px",
                   height: "22px",
                   background:
-                    "url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat",
+                    `url(${imgPathTo('首页.svg')}) center center /  21px 21px no-repeat`,
                 }}
+                className={'icon-shouye'}
               />
             }
             selected={this.state.selectedTab === "homeTab"}
@@ -113,7 +119,7 @@ export class Main extends React.Component {
                   width: "22px",
                   height: "22px",
                   background:
-                    "url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat",
+                    `url(${imgPathTo('分类.svg')}) center center /  21px 21px no-repeat`,
                 }}
               />
             }
@@ -123,13 +129,13 @@ export class Main extends React.Component {
                   width: "22px",
                   height: "22px",
                   background:
-                    "url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat",
+                    `url(${imgPathTo('分类.svg')}) center center /  21px 21px no-repeat`,
                 }}
               />
             }
             title="分类"
             key="sort"
-            badge={"new"}
+            // badge={"new"}
             selected={this.state.selectedTab === "sortTab"}
             onPress={() => {
               this.setState({
@@ -149,7 +155,7 @@ export class Main extends React.Component {
                   width: "22px",
                   height: "22px",
                   background:
-                    "url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat",
+                    `url(${imgPathTo('直播间.svg')}) center center /  21px 21px no-repeat`,
                 }}
               />
             }
@@ -159,13 +165,13 @@ export class Main extends React.Component {
                   width: "22px",
                   height: "22px",
                   background:
-                    "url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat",
+                    `url(${imgPathTo('直播间.svg')}) center center /  21px 21px no-repeat`,
                 }}
               />
             }
             title="我的直播间"
             key="living"
-            dot
+            // dot
             selected={this.state.selectedTab === "greenTab"}
             onPress={() => {
               this.setState({
@@ -180,11 +186,11 @@ export class Main extends React.Component {
           <TabBar.Item
             icon={{
               uri:
-                "https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg",
+                `${imgPathTo('个人中心.svg')}`,
             }}
             selectedIcon={{
               uri:
-                "https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg",
+                `${imgPathTo('个人中心.svg')}`,
             }}
             title="个人中心"
             key="mine"

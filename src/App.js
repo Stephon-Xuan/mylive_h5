@@ -6,6 +6,7 @@ import { Login } from "./page/Login/Login";
 import { Register } from "./page/Register/Register";
 import { LivePlay } from "./page/LivingRoom/LivePlay";
 import { SearchContent } from "./page/SearchContent/SearchContent.jsx";
+import { NotFound } from "./page/NotFound/NotFound";
 import Api from "./api/index";
 import {
   HashRouter as Router,
@@ -27,8 +28,8 @@ function App() {
           <Route path="/register" component={Register}></Route>
           <Route path="/login" component={Login}></Route>
           <Route path="/search" component={SearchContent}></Route>
-          <Route path="/" component={Main}></Route>
-          {/* <Route component={NotFound} /> */}
+          <Route path="" component={Main}></Route>
+          <Route component={NotFound} />
         </Switch>
         {/* </Router> */}
       </BrowserRouter>

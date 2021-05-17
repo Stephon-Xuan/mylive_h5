@@ -1,5 +1,5 @@
 // import ajax from "../ajax";
-import axios from "../assets/js/http.js";
+import axios from "../../common/http.js";
 
 const baseEnv = {
   webUrl: "http://localhost:8512",
