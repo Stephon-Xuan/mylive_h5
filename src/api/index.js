@@ -32,12 +32,13 @@ import ajax from "./ajax";
 
 import livingRoomApi from "./modules/livingRoom";
 import carouselApi from "./modules/carousel";
-// import userApi from "./modules/user";
+import userApi from "./modules/user";
+import channelApi from "./modules/channel";
 
 const apiObj = {
   livingRoomApi,
   carouselApi,
-  //   userApi,
+  userApi,
 };
 // console.log("api------", apiObj, livingRoomApi.getRoomList());
 export default apiObj;

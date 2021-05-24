@@ -1,38 +1,27 @@
 import { SearchBar, Button, WhiteSpace, WingBlank } from 'antd-mobile';
-import React from 'react'
+import React, { useState } from 'react'
 
-export class SearchBtn extends React.Component {
-  state = {
-    value: '',
+// 装饰
+export const SearchBtn = (props) => {
+  const { getValue } = props
+  const [value,setValue] = useState('')
+  
+  const clear = () => {
+    setValue('');
   };
-//   componentDidMount() {
-//     this.autoFocusInst.focus();
-//   }
-  onChange= (value) => {
-    this.setState({ value });
-  };
-  clear = () => {
-    this.setState({ value: '' });
-  };
-//   handleClick = () => {
-//     this.manualFocusInst.focus();
-//   }
-  render() {
-    return (<div>
-      <SearchBar 
-        placeholder="Search" 
-        maxLength={8}
-        
-        // value={this.state.value}
-        // placeholder="Search"
-        onSubmit={value => console.log(value, 'onSubmit')}
-        // onClear={value => console.log(value, 'onClear')}
-        // onFocus={() => console.log('onFocus')}
-        // onBlur={() => console.log('onBlur')}
-        // onCancel={() => console.log('onCancel')}
-        // showCancelButton
-        // onChange={this.onChange}
-      />   
-    </div>);
+
+  const onSubmit =(val)=>{
+    getValue(val)
   }
+
+
+  return (<div>
+    <SearchBar 
+      placeholder="支持搜索直播课与用户昵称" 
+      maxLength={8}
+      onClear={clear}
+      onSubmit={val => onSubmit(val)}
+    />   
+  </div>);
 }
+

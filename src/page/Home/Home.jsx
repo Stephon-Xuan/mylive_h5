@@ -19,7 +19,6 @@ export const Home = () => {
             })
 
             $api.carouselApi.getCarouselList().then(data =>{
-                console.log("轮播图父级数据",data)
                 setCarouselList(data)
             }).catch(e =>[
                 console.log("请求错误",e)
@@ -42,6 +41,4 @@ export const Home = () => {
             <ListShow listData={listData}></ListShow>
         </div>
     )
-    
-    
 }

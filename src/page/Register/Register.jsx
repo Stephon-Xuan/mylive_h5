@@ -2,7 +2,7 @@
 登陆的路由组件
  */
 
-import React, {Component} from 'react'
+import React, {Component, useState} from 'react'
 import {
   NavBar,
   WingBlank,
@@ -10,44 +10,45 @@ import {
   InputItem,
   WhiteSpace,
   Button,
-  Icon
+  Icon,
+  Toast
 } from 'antd-mobile'
 import {Redirect} from 'react-router-dom'
 import './Register.css'
+import $api from '../../api'
+import { Route, useHistory } from "react-router-dom";
 
+export const Register = () => {
+  const history = useHistory()
+  const [email,setEmail] = useState('')
+  const [username,setName] = useState('')
+  const [password,setPassword] = useState('')
+  const toLogin = () => {
+    if(!email || !username || !password){
+      Toast.fail('请填写完整的用户信息', 1);
+      return
+    }
+    if(email.indexOf('@') < 0){
+      Toast.info('邮箱格式不正确', 1);
+      return
+    }
 
-const ListItem = List.Item
+    const params ={
+      name:username,
+      email,
+      age:0,
+      password
+    }
 
-export class Register extends Component {
-  state = {
-    emial:'',
-    username: '',  // 用户名
-    password: '',  // 密码
-  }
-
-  register = () => {
-    this.props.register(this.state)
-  }
-
-  // 处理输入数据的改变: 更新对应的状态
-  handleChange = (name, val) => {
-    // 更新状态
-    this.setState({
-      [name]: val  // 属性名不是name, 而是name变量的值
+    $api.userApi.addUser(params).then(data =>{
+      Toast.success('注册成功', 1);
+      history.push('/login')
+    }).catch(e =>{
+      console.log("错误",e)
+      Toast.fail('注册失败', 1);
     })
+    console.log({email,username,password})
   }
-
-  toRegister = () => {
-    this.props.history.replace('/register')
-  }
-
-  render() {
-
-    // const {msg, redirectTo} = this.props.user
-    // 如果redirectTo有值, 就需要重定向到指定的路由
-    // if(redirectTo) {
-    //   return <Redirect to={redirectTo}/>
-    // }
 
     return (
       <div>
@@ -64,18 +65,17 @@ export class Register extends Component {
                   src="http://localhost:8080/img/logo.1a2850a7.jpg"></img>
                 <List>
                     {/* {msg ? <div className='error-msg'>{msg}</div> : null} */}
-                    <InputItem placeholder='请输入昵称' onChange={val => {this.handleChange('username', val)}}>昵称:</InputItem>
+                    <InputItem placeholder='请输入昵称' onChange={val => {setName(val)}}>昵称:</InputItem>
                     <WhiteSpace/>
-                    <InputItem placeholder='请输入用户名' onChange={val => {this.handleChange('username', val)}}>邮箱:</InputItem>
+                    <InputItem placeholder='请输入邮箱' onChange={val => {setEmail(val)}}>邮箱:</InputItem>
                     <WhiteSpace/>
-                    <InputItem placeholder='请输入密码' type="password" onChange={val => {this.handleChange('password', val)}}>密&nbsp;&nbsp;&nbsp;码:</InputItem>
+                    <InputItem placeholder='请输入密码' type="password" onChange={val => {setPassword(val)}}>密&nbsp;&nbsp;&nbsp;码:</InputItem>
                     <WhiteSpace/>
 
-                    <Button type='waring' onClick={this.register}>注&nbsp;&nbsp;&nbsp;册</Button>
+                    <Button type='waring' onClick={toLogin}>注&nbsp;&nbsp;&nbsp;册</Button>
                 </List>
             </div>
         </WingBlank>
       </div>
     )
-  }
-}
+    }

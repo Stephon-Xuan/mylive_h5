@@ -13,7 +13,12 @@ class LivingRoom {
    * @return {type}
    */
   getRoomList(params) {
-    if (params && params.type) {
+    console.log("参数", params);
+    if (
+      (params && params.type) ||
+      (params && (params.user_id || params.channel_type))
+    ) {
+      console.log("类型查找");
       //通过类型进行搜索
       return axios
         .get(`${baseEnv.webUrl}/livingRoom/roomListByType`, { params: params })
@@ -78,6 +83,14 @@ class LivingRoom {
     console.log("参数", params);
     return axios
       .get(`${baseEnv.webUrl}/livingRoom/deleteRoom`, { params })
+      .then((res) => {
+        return res.data.data;
+      });
+  }
+
+  getRoomType() {
+    return axios
+      .get(`${baseEnv.webUrl}/livingRoom/roomTypeList`)
       .then((res) => {
         return res.data.data;
       });

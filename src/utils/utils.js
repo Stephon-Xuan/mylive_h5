@@ -21,6 +21,6 @@ export function staticPathTo(path) {
 }
 
 export function imgPathTo(name) {
-  console.log("图片路径", staticPathTo("static/img/" + name));
+  // console.log("图片路径", staticPathTo("static/img/" + name));
   return staticPathTo("static/img/" + name);
 }

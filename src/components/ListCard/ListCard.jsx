@@ -31,7 +31,8 @@ export const ListCard = (props)=> {
                     
                     <img style={{ height: '64px', width:'96px', marginRight: '15px' }} src={listItem.image} alt="" />
                     <div style={{ lineHeight: 1 }}>
-                    <div style={{ marginBottom: '8px', fontWeight: 'bold',display:'flex',alignItem:'center'}}>
+                    <div style={{fontWeight: 'bold',marginBottom:'5px'}}>{listItem.title}</div>
+                    <div style={{ marginBottom: '8px',display:'flex',alignItem:'center'}}>
                         <img style={{
                             width: '22px',
                             height: '22px',
@@ -39,7 +40,7 @@ export const ListCard = (props)=> {
                         }}
                         src={listItem.avatar}></img>    
                         <span style={{lineHeight:'22px'}}>
-                            {listItem.title}
+                            {listItem.name}
                         </span>
                         
                     </div>

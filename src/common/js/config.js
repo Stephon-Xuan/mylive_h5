@@ -24,6 +24,7 @@
 
 const baseUrl = "http://localhost";
 const baseEnv = {
+  webUrl: `http://localhost:8512`,
   socketUrl: {
     barrage: `${baseUrl}:8511/barrage`,
   },
