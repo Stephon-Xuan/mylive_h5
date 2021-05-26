@@ -26,6 +26,31 @@ export class Main extends React.Component {
     };
   }
 
+  // setTab(val){
+  //   this.setState.selectedTab = val 
+  // }
+
+  componentWillMount(){
+
+    if(sessionStorage.getItem('liveTab')){
+      // this.state.selectedTab = sessionStorage.getItem('liveTab')
+      this.setTab(sessionStorage.getItem('liveTab'))
+    }
+    console.log("进来了")
+  }
+
+  // componentWillUnmount (){
+  //   sessionStorage.setItem('liveTab',this.state.selectedTab)
+  //   console.log("出去了")
+  // }
+
+  setTab(val){
+    this.setState({
+      selectedTab: val,
+    });
+    sessionStorage.setItem('liveTab',val)
+  }
+
   // history = useHistory()
 
   renderContent(pageText) {
@@ -108,9 +133,7 @@ export class Main extends React.Component {
             selected={this.state.selectedTab === "homeTab"}
             // badge={1}
             onPress={() => {
-              this.setState({
-                selectedTab: "homeTab",
-              });
+              this.setTab("homeTab");
             }}
             data-seed="logId"
           >
@@ -144,9 +167,7 @@ export class Main extends React.Component {
             // badge={"new"}
             selected={this.state.selectedTab === "sortTab"}
             onPress={() => {
-              this.setState({
-                selectedTab: "sortTab",
-              });
+              this.setTab("sortTab");
               // window.location.replace('/sort')
             }}
             data-seed="logId1"
@@ -181,9 +202,10 @@ export class Main extends React.Component {
             // dot
             selected={this.state.selectedTab === "greenTab"}
             onPress={() => {
-              this.setState({
-                selectedTab: "greenTab",
-              });
+              // this.setState({
+              //   selectedTab: "greenTab",
+              // });
+              this.setTab("greenTab");
             }}
           >
             {/* {this.renderContent("Friend")} */}
@@ -203,9 +225,10 @@ export class Main extends React.Component {
             key="mine"
             selected={this.state.selectedTab === "mineTab"}
             onPress={() => {
-              this.setState({
-                selectedTab: "mineTab",
-              });
+              // this.setState({
+              //   selectedTab: "mineTab",
+              // });
+              this.setTab("mineTab");
             }}
           >
             {/* {this.renderContent("My")} */}

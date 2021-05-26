@@ -9,9 +9,9 @@ export const Mine =() => {
     age: 18,
     avatar: "http://p1.music.126.net/HHld8HW1sje1MP6PuzFWZg==/109951164045790653.jpg",
     createTime: null,
-    email: "3@qq.com",
+    email: "",
     id: "cpMTduWM9VVYVkavefZsTQkwSlLnSkYp",
-    name: "新用户",
+    name: "暂无用户",
     password: "123456",
     updateTime: null,
     visit_total: null,
@@ -20,12 +20,12 @@ export const Mine =() => {
   })
 
   useEffect(()=>{
-    $api.userApi.getUserInfo(user_id).then(data =>{
-      // console.log("数据",data)
-      if(data && data.code === 200){
-        setUserInfo(data.data)
+    $api.analysisApi.getAnalysisList({user_id}).then(data =>{
+      console.log("数据",data)
+      if(data && data.length > 0){
+        console.log("数据------",data)
+        setUserInfo(data[0])
       }
-      
     }).catch(e=>{
       console.log("错误",e)
     })
@@ -68,20 +68,28 @@ export const Mine =() => {
                   邮箱
                   <span style={{float:'right',color:'#ada2a2'}}>{userInfo.email}</span>
           </Item>
+          <Item 
+              width={'100px'}
+              >
+                  年龄
+                  <span style={{float:'right',color:'#ada2a2'}}>{userInfo.age}</span>
+          </Item>
           <Item
               onClick={() => {}}
               >积分
-                  <span style={{float:'right',color:'#ada2a2'}}>{userInfo.integral_total}</span>
+                  <span style={{float:'right',color:'#ada2a2'}}>{userInfo.integral_surplus ? '￥'+ userInfo.integral_surplus : 0 }</span>
           </Item>
           <Item
-              onClick={() => {}}
+              onClick={()=>{window.location.assign('/getRecord')}}
+              arrow="horizontal"
               >最近访问
-                  <span style={{float:'right',color:'#ada2a2'}}>{userInfo.integral_total}</span>
+                  {/* <span style={{float:'right',color:'#ada2a2'}}>{userInfo.integral_total}</span> */}
           </Item>
           <Item
-              onClick={() => {}}
+              onClick={()=>{window.location.assign('/getRoom')}}
+              arrow="horizontal"
               >已购买
-                  <span style={{float:'right',color:'#ada2a2'}}>{userInfo.integral_total}</span>
+                  {/* <span style={{float:'right',color:'#ada2a2'}}>{userInfo.integral_total}</span> */}
           </Item>
 
           <Item>

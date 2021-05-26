@@ -7,6 +7,8 @@ import { Register } from "./page/Register/Register";
 import { LivePlay } from "./page/LivingRoom/LivePlay";
 import { Channel } from "./page/LivingRoom/Channel";
 import { SearchContent } from "./page/SearchContent/SearchContent.jsx";
+import { GetRoom } from "./page/GetRoom/GetRoom";
+import { GetRecord } from "./page/GetRecord/GetRecord";
 import { NotFound } from "./page/NotFound/NotFound";
 import { TabList } from "./page/Sort/Sort";
 import Api from "./api/index";
@@ -31,6 +33,8 @@ function App() {
           <Route path="/register" component={Register}></Route>
           <Route path="/login" component={Login}></Route>
           <Route path="/search" component={SearchContent}></Route>
+          <Route path="/getRoom" component={GetRoom}></Route>
+          <Route path="/getRecord" component={GetRecord}></Route>
           <Route path="/" component={Main}>
             {/* <Router path="" component={}></Router> */}
             {/* <Route path="/sort" component={TabList}></Route> */}
