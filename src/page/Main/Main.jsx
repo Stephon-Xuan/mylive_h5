@@ -8,7 +8,13 @@ import { Header } from './Header/Header'
 import $api from '../../api'
 // import { IconFont } from '../../components/IconFont/IconFont'
 import { imgPathTo } from '../../utils/utils'
-
+import {
+  HashRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  BrowserRouter,
+} from "react-router-dom";
 
 export class Main extends React.Component {
   constructor(props) {
@@ -19,6 +25,8 @@ export class Main extends React.Component {
       fullScreen: true, //是否全屏
     };
   }
+
+  // history = useHistory()
 
   renderContent(pageText) {
     return (
@@ -107,9 +115,7 @@ export class Main extends React.Component {
             data-seed="logId"
           >
             <Header title='首页'></Header>
-            {/* {this.renderContent("Life")} */}
-            <Home></Home>
-            {/* <List></List> */}
+            {this.state.selectedTab === "homeTab" && <Home></Home>}
             
           </TabBar.Item>
           <TabBar.Item
@@ -141,12 +147,13 @@ export class Main extends React.Component {
               this.setState({
                 selectedTab: "sortTab",
               });
+              // window.location.replace('/sort')
             }}
             data-seed="logId1"
           >
             {/* {this.renderContent("Koubei")} */}
              <Header title='分类'></Header>
-            <TabList></TabList>
+            {this.state.selectedTab==='sortTab' && <TabList></TabList>}
           </TabBar.Item>
           <TabBar.Item
             icon={
@@ -180,7 +187,7 @@ export class Main extends React.Component {
             }}
           >
             {/* {this.renderContent("Friend")} */}
-            <LivingRoom></LivingRoom>
+            {this.state.selectedTab ==='greenTab' && <LivingRoom></LivingRoom>}
           </TabBar.Item>
           
           <TabBar.Item
@@ -203,7 +210,7 @@ export class Main extends React.Component {
           >
             {/* {this.renderContent("My")} */}
             <Header title="个人中心"></Header>
-            <Mine></Mine>
+            {this.state.selectedTab === "mineTab" && <Mine></Mine>}
           </TabBar.Item>
         </TabBar>
       </div>

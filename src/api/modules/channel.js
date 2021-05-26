@@ -40,6 +40,16 @@ class Channel {
         return res.data.data;
       });
   }
+  // 专栏详情
+  channelDetail(params) {
+    return axios
+      .get(`${baseEnv.webUrl}/channel/channelDetail`, {
+        params,
+      })
+      .then((res) => {
+        return res.data.data;
+      });
+  }
 }
 
 const channel = new Channel();

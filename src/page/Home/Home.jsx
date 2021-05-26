@@ -7,6 +7,7 @@ import { Notice } from '../../components/Notice/Notice'
 import './Home.css'
 import $api from '../../api'
 
+
 export const Home = () => {
      const [listData,setlistData] = useState([]) 
      const [carouselList,setCarouselList] = useState([])
@@ -25,6 +26,9 @@ export const Home = () => {
             ])
 
         },[])
+
+
+
 
     return(
         <div>

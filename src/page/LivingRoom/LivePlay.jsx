@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { NavBar, Icon } from 'antd-mobile';
 import Reflv from './Reflv.jsx'
 import { Barrage } from './Barrage'
 import { getQueryVariable } from '../../utils/utils'
 import { Notice } from '../../components/Notice/Notice'
 import $api from '../../api/index'
+import $baseEnv from "../../common/js/config.js";
 
 export const LivePlay = (props) => {
 
   const [roomInfo, setRoomInfo] = useState(null)
-  const flvUrl = ''
-
 
   useEffect(() => {
     // console.log("跳转过来的属性值",props.location.state)
@@ -27,13 +26,16 @@ export const LivePlay = (props) => {
     })
   }, [])
 
+  
+
 
   if (!roomInfo) {
     return null
   }
 
-
+  console.log("直播连接",roomInfo && roomInfo.live_url ? roomInfo.live_url : `${$baseEnv.livingUrl}/${roomInfo.room_id}.flv`)
   return (<div>
+    
     <NavBar
       mode="light"
       icon={<Icon type="left" />}
@@ -81,9 +83,8 @@ export const LivePlay = (props) => {
       http://player0007.tudou-21vglb.com/flv/002/040/745/902040745.flv
     失效 */}
     {
-      roomInfo.live_url && <Reflv url={roomInfo.live_url} type="flv" />
+      <Reflv url={roomInfo && roomInfo.live_url ? roomInfo.live_url : `${$baseEnv.livingUrl}/${roomInfo.room_id}.flv`} type="flv" />
     }
-
 
     {/* 弹幕区域 */}
     <div style={{ backgroundColor: '#191919' }}>

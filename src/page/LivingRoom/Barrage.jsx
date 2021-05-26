@@ -3,18 +3,20 @@ import { Button, InputItem } from 'antd-mobile';
 import { sockBarrage, socketBarrage } from "../../api/socket"
 import './LivingRoom.css'
 import { common } from "../../common/js/common"
+import $api from '../../api'
 
 
 export const Barrage = (props) => {
+    const user_id =localStorage.getItem('user_id') 
     const { roomInfo } = props
-    const [value, setValue] = useState('rrr')
+    const [value, setValue] = useState('')
     const [barrageItem, setBarrageItem] = useState([])
     const [barrageArr, setBarrageArr] = useState([])
     const [isSend, setIsSend] = useState(true)
+    const [history,setHistory] = useState('')
     const barrageMsg = []
 
     // 获取进来的用户id
-
     const barrageList = useMemo(() => {
         return [
             ...barrageArr
@@ -37,12 +39,38 @@ export const Barrage = (props) => {
             barrageMsg.push(res)
             setBarrageArr([...barrageMsg])
         })
+        // 获取用户数据
+        $api.analysisApi.getAnalysisList({user_id}).then(data =>{
+            // 过滤数据
+            const temp = data && data.length > 0 ? data[0].visit_history : ''
+            const historyList = temp ? JSON.parse(temp) : []
+            setHistory(historyList)
+        }).catch(e =>{
+            console.log("错误",e)
+        })
         // 取消监听
         return () => {
-            socketBarrage.off("chatLiveRoom", () => { })
+            socketBarrage.off("chatLiveRoom", () => {
+             })
             sockBarrage.leaveRoom(roomInfo.room_id)
         }
     }, [])
+
+
+    useEffect(()=>{
+        if(!history) return
+        const temp = []
+        temp.push({room_id:roomInfo.room_id,title:roomInfo.title},...history.slice(0,9))
+        // console.log("历史访问数据",history,temp)
+        const params ={
+                user_id,
+                visit_history:JSON.stringify(temp)
+            }
+            $api.analysisApi.addAnalysis(params).then(data=>{
+            }).catch(e=>{
+                console.log("数据错误",e)
+            })
+    },[history])
 
     const chatLiveRoom = () => {
         const livingRoom = common.getUrlParam("room")

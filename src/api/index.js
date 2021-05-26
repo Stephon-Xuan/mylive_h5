@@ -34,11 +34,14 @@ import livingRoomApi from "./modules/livingRoom";
 import carouselApi from "./modules/carousel";
 import userApi from "./modules/user";
 import channelApi from "./modules/channel";
+import analysisApi from "./modules/analysis";
 
 const apiObj = {
   livingRoomApi,
   carouselApi,
   userApi,
+  channelApi,
+  analysisApi,
 };
 // console.log("api------", apiObj, livingRoomApi.getRoomList());
 export default apiObj;

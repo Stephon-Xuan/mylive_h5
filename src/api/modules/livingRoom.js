@@ -18,7 +18,7 @@ class LivingRoom {
       (params && params.type) ||
       (params && (params.user_id || params.channel_type))
     ) {
-      console.log("类型查找");
+      // console.log("类型查找");
       //通过类型进行搜索
       return axios
         .get(`${baseEnv.webUrl}/livingRoom/roomListByType`, { params: params })

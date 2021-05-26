@@ -35,7 +35,7 @@ export const Mine =() => {
 
   return (<div>
       <List renderHeader={() => '个人信息'} className="my-list">
-          <Item>
+          <Item onClick={()=>{window.location='http://localhost:8080';console.log("点击了")}}>
               <div style={{padding:'5px 20px',backgroundColor:"#d7dbde",color:'#fff'}}>
               <div style={{display:'flex',alignItem:'center',height:'50px'}}>
                   <img style={{
@@ -69,19 +69,21 @@ export const Mine =() => {
                   <span style={{float:'right',color:'#ada2a2'}}>{userInfo.email}</span>
           </Item>
           <Item
-              // thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
-              // arrow="horizontal"
               onClick={() => {}}
               >积分
                   <span style={{float:'right',color:'#ada2a2'}}>{userInfo.integral_total}</span>
-              </Item>
-          {/* <Item
-          thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
-          onClick={() => {}}
-          arrow="horizontal"
-          >
-          My Cost Ratio
-          </Item> */}
+          </Item>
+          <Item
+              onClick={() => {}}
+              >最近访问
+                  <span style={{float:'right',color:'#ada2a2'}}>{userInfo.integral_total}</span>
+          </Item>
+          <Item
+              onClick={() => {}}
+              >已购买
+                  <span style={{float:'right',color:'#ada2a2'}}>{userInfo.integral_total}</span>
+          </Item>
+
           <Item>
               <WingBlank>
                   <Button type="warning" onClick={()=>{window.location.assign('/login')}}>退出登录</Button>
