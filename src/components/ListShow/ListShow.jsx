@@ -63,11 +63,12 @@ const alert = Modal.alert;
                 Toast.fail('用户不存在，请注册登录！', 1);
                 return
             }
-
+            // 如果是自己的课,直接跳转
             if(listItem.user_id === user_id || !listItem.integral_fee){
                 history.push(`/livePlay?id=${listItem.id}`,listItem.id)
                 return
             }
+
             const roomList = userInfo.room_list ? JSON.parse(userInfo.room_list) : []
 
             // if(roomList.length > 0){
@@ -87,8 +88,6 @@ const alert = Modal.alert;
                 history.push(`/livePlay?id=${listItem.id}`,listItem.id)
                 return
             }
-
-
 
             //2.如果是别人的课，分是否购买了
             alert('购买', '你是否要使用积分购买', [
@@ -110,8 +109,20 @@ const alert = Modal.alert;
                                 }
                                 $api.analysisApi.addAnalysis(params).then(data=>{
                                     if(data.code === 200){
-                                        Toast.success('购买成功', 1);
-                                        history.push(`/livePlay?id=${listItem.id}`,listItem.id)
+                                        console.log("列表数据",listItem)
+                                        const query_params ={
+                                            room_id:listItem.id,
+                                            user_id,
+                                        }
+
+                                        $api.traineesApi.bindTraninees(query_params).then(data=>{
+                                            console.log("学员数据绑定成功",data)
+                                        }).catch(e=>{
+                                            console.log("学员绑定错误",e)
+                                        }).finally(()=>{
+                                            Toast.success('购买成功', 1);
+                                            history.push(`/livePlay?id=${listItem.id}`,listItem.id)
+                                        })
                                     }else{
                                         Toast.fail('购买失败', 1);
                                     }

@@ -6,28 +6,26 @@ import { getQueryVariable } from '../../utils/utils'
 import { Notice } from '../../components/Notice/Notice'
 import $api from '../../api/index'
 import $baseEnv from "../../common/js/config.js";
+import { Route, useHistory } from "react-router-dom";
 
 export const LivePlay = (props) => {
-
+  const user_id =localStorage.getItem('user_id')  
+  const room_id = getQueryVariable('id')
   const [roomInfo, setRoomInfo] = useState(null)
+   const history = useHistory()
 
   useEffect(() => {
     // console.log("跳转过来的属性值",props.location.state)
     console.log("房间号", getQueryVariable('id'))
-
+    const room_id = getQueryVariable('id')
     // setRoomId(getQueryVariable('id'))
-
     $api.livingRoomApi.getRoomDetail({ id: getQueryVariable('id') }).then(data => {
       console.log("获取直播间信息成功", data)
-
       setRoomInfo(data)
     }).catch(e => {
       console.log("请求错误", e)
     })
   }, [])
-
-  
-
 
   if (!roomInfo) {
     return null
@@ -40,10 +38,14 @@ export const LivePlay = (props) => {
       mode="light"
       icon={<Icon type="left" />}
       onLeftClick={() => window.history.go(-1)}
-    // rightContent={[
-    //     <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-    //     <Icon key="1" type="ellipsis" />,
-    // ]}
+      rightContent={
+        // <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
+        // <Icon key="1" type="ellipsis" />,
+        // roomInfo.examine_list && <span style={{color:"red"}}>作业</span>
+        <span style={{color:"red"}} onClick={()=>{
+          history.push(`/homework?user_id=${user_id}&room_id=${room_id}`,user_id,room_id)
+        }}>作业</span>
+    }
     >
       {/* <img style={{
                 width: '22px',

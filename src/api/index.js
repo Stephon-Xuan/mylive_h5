@@ -35,6 +35,8 @@ import carouselApi from "./modules/carousel";
 import userApi from "./modules/user";
 import channelApi from "./modules/channel";
 import analysisApi from "./modules/analysis";
+import examineApi from "./modules/examine";
+import traineesApi from "./modules/trainees";
 
 const apiObj = {
   livingRoomApi,
@@ -42,6 +44,8 @@ const apiObj = {
   userApi,
   channelApi,
   analysisApi,
+  examineApi,
+  traineesApi,
 };
 // console.log("api------", apiObj, livingRoomApi.getRoomList());
 export default apiObj;

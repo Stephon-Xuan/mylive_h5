@@ -7,10 +7,6 @@ import axios from "../../common/http.js";
 class User {
   /**
    * @description: 用户登录接口
-   * @Date: 2020-09-03 10:00:32
-   * @author: Stephon
-   * @param {type}
-   * @return {type}
    */
   userLogin(params) {
     return axios.post(`${baseEnv.webUrl}/users/login`, params).then((res) => {
@@ -36,10 +32,6 @@ class User {
 
   /**
    * @description: 新增用户
-   * @Date: 2020-08-31 16:06:33
-   * @author: Stephon
-   * @param {type}
-   * @return {type}
    */
   addUser(params) {
     console.log("新增用户参数", params);

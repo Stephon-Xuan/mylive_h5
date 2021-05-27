@@ -48,6 +48,10 @@ export const Barrage = (props) => {
         }).catch(e =>{
             console.log("错误",e)
         })
+
+        
+     
+
         // 取消监听
         return () => {
             socketBarrage.off("chatLiveRoom", () => {
