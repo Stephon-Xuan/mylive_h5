@@ -44,7 +44,7 @@ export const LivePlay = (props) => {
         // roomInfo.examine_list && <span style={{color:"red"}}>作业</span>
         <span style={{color:"red"}} onClick={()=>{
           history.push(`/homework?user_id=${user_id}&room_id=${room_id}`,user_id,room_id)
-        }}>作业</span>
+        }}>学员作业</span>
     }
     >
       {/* <img style={{
